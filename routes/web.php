@@ -14,10 +14,12 @@ use App\Task;
 */
 
 //index
-Route::get('/', function () {
-    $tasks = Task::all();
-    return View::make('welcome')->with('tasks',$tasks);
-});
+
+
+Route::get('/', [
+	'uses' => 'TaskController@getIndex',
+	'as' => 'tasks'
+]);
 
 //get id
 Route::get('/tasks/{task_id?}',function($task_id){
